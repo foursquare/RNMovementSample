@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>RNPilgrimSample</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -36,9 +36,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Need location for Pilgrim</string>
+	<string>Need location for Movement SDK</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Need location for Pilgrim</string>
+	<string>Need location for Movement SDK</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

@@ -22,7 +22,7 @@ export default function App(): JSX.Element {
           <RootStack.Screen
             name="Home"
             component={HomeScreen}
-            options={{title: 'Pilgrim React Native Sample'}}
+            options={{title: 'Movement SDK React Native Sample'}}
           />
           <RootStack.Screen
             name="GetCurrentLocation"

@@ -134,7 +134,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.rnpilgrimsample"
+        applicationId "com.rnmovementsample"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -157,7 +157,7 @@ android {
                     cppFlags "-std=c++17"
                     // Make sure this target name is the same you specify inside the
                     // src/main/jni/Android.mk file for the `LOCAL_MODULE` variable.
-                    targets "rnpilgrimsample_appmodules"
+                    targets "rnmovementsample_appmodules"
                 }
             }
             if (!enableSeparateBuildPerCPUArchitecture) {
@@ -284,8 +284,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-
-    compileOnly 'com.foursquare:pilgrimsdk:3.4.0'
 }
 
 if (isNewArchitectureEnabled()) {

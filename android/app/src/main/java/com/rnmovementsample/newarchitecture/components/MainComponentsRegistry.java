@@ -1,4 +1,4 @@
-package com.rnpilgrimsample.newarchitecture.components;
+package com.rnmovementsample.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

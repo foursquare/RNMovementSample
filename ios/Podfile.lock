@@ -74,11 +74,11 @@ PODS:
   - fmt (6.2.1)
   - glog (0.3.5)
   - libevent (2.1.12)
-  - OpenSSL-Universal (1.1.1100)
-  - Pilgrim (3.4.0)
-  - pilgrim-sdk-react-native (1.2.0):
-    - Pilgrim (= 3.4.0)
+  - Movement (4.0.0-rc1)
+  - movement-sdk-react-native (4.0.0):
+    - Movement (= 4.0.0-rc1)
     - React-Core
+  - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
     - DoubleConversion
@@ -401,8 +401,8 @@ DEPENDENCIES:
   - FlipperKit/FlipperKitUserDefaultsPlugin (= 0.125.0)
   - FlipperKit/SKIOSNetworkPlugin (= 0.125.0)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - "movement-sdk-react-native (from `../node_modules/@foursquare/movement-sdk-react-native`)"
   - OpenSSL-Universal (= 1.1.1100)
-  - "pilgrim-sdk-react-native (from `../node_modules/@foursquare/pilgrim-sdk-react-native`)"
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -439,6 +439,8 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
+  https://github.com/foursquare/Movement-CocoaPods-Internal:
+    - Movement
   trunk:
     - CocoaAsyncSocket
     - Flipper
@@ -453,7 +455,6 @@ SPEC REPOS:
     - fmt
     - libevent
     - OpenSSL-Universal
-    - Pilgrim
     - SocketRocket
     - YogaKit
 
@@ -468,8 +469,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
-  pilgrim-sdk-react-native:
-    :path: "../node_modules/@foursquare/pilgrim-sdk-react-native"
+  movement-sdk-react-native:
+    :path: "../node_modules/@foursquare/movement-sdk-react-native"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -553,9 +554,9 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 3d02b25ca00c2d456734d0bcff864cbc62f6ae1a
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  Movement: 8b6f6b6dfd0aa923749013a0eed94f7cf29ddfed
+  movement-sdk-react-native: 8a12dc8303801a28619bc3f9d9a7966f46c52ea5
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  Pilgrim: cc2a95e9c15f35989bb4833a7772499382559a87
-  pilgrim-sdk-react-native: e0cb5497a259d617276992a316f5a6c6d7fec2d6
   RCT-Folly: b9d9fe1fc70114b751c076104e52f3b1b5e5a95a
   RCTRequired: b723d4d6da2795df58189a01f92856b6912cf256
   RCTTypeSafety: 3973d2fcf39f43f7819e840d56ea6b2fe45996a0
@@ -570,9 +571,9 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 7c23e92591431ac925f430b3118de934cb816ac0
   React-jsinspector: 31e53f048cc8f32605de36981903a7bbf9456892
   React-logger: 9a6c684d5cd56c4129e0c2842dba75c4bfb1e981
-  react-native-location: 5a40ec1cc6abf2f6d94df979f98ec76c3a415681
-  react-native-maps: b9dc7086ea283f748330d80d369d81d9548f8a2b
-  react-native-safe-area-context: 6c12e3859b6f27b25de4fee8201cfb858432d8de
+  react-native-location: 9c53c0957756f7d70e8fdc76b1c7ed85867c8d0b
+  react-native-maps: 423e6406ae8203a887a360130255193840d6bd44
+  react-native-safe-area-context: d768fdafd416b4c0bdc7bef4240c9ee53909baf3
   React-perflogger: 281c34e42f13245c7a4d6932364d9182f8655e1a
   React-RCTActionSheet: 92f4292754a1b4a0e42bf9b1489206a06f878929
   React-RCTAnimation: 2a5bb5549758e4e594481633f3db649d11519f75
@@ -591,6 +592,6 @@ SPEC CHECKSUMS:
   Yoga: 236056dd74cda4d9d76c20306fd8c20bb087614d
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 04b2ef568a4efb14747b7ffae79aa8390961192f
+PODFILE CHECKSUM: 9ea50a727853c30eb02905e49c7b636cde1df0a7
 
 COCOAPODS: 1.11.3

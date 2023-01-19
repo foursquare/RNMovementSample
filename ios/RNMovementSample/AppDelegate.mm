@@ -6,8 +6,8 @@
 
 #import <React/RCTAppSetupUtils.h>
 
-#import <Pilgrim/Pilgrim.h>
-#import <pilgrim-sdk-react-native/RNPilgrimSdk.h>
+#import <Movement/Movement.h>
+#import <movement-sdk-react-native/RNMovementSdk.h>
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -34,7 +34,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [[FSQPPilgrimManager sharedManager] configureWithConsumerKey:@"CONSUMER_KEY"
+  [[FSQMovementManager sharedManager] configureWithConsumerKey:@"CONSUMER_KEY"
                                                         secret:@"CONSUMER_SECRET"
                                                       delegate:nil
                                                     completion:nil];
@@ -52,7 +52,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 #endif
 
   NSDictionary *initProps = [self prepareInitialProps];
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"RNPilgrimSample", initProps);
+  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"RNMovementSample", initProps);
 
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor systemBackgroundColor];

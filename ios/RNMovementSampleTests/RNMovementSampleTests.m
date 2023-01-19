@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface RNPilgrimSampleTests : XCTestCase
+@interface RNMovementSampleTests : XCTestCase
 
 @end
 
-@implementation RNPilgrimSampleTests
+@implementation RNMovementSampleTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

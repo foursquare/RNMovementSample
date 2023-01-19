@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import RNLocation from 'react-native-location';
-import PilgrimSdk from '@foursquare/pilgrim-sdk-react-native';
+import MovementSdk from '@foursquare/movement-sdk-react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParamList} from '../App';
 
@@ -35,7 +35,7 @@ export default class HomeScreen extends Component<HomePropsProps, HomeState> {
   private async requestLocationPermission() {
     function alertPermissionError() {
       Alert.alert(
-        'Pilgrim SDK',
+        'Movement SDK',
         'Location permission is required please enable in Settings',
       );
     }
@@ -61,12 +61,12 @@ export default class HomeScreen extends Component<HomePropsProps, HomeState> {
   }
 
   private async setInstallId() {
-    const installId = await PilgrimSdk.getInstallId();
+    const installId = await MovementSdk.getInstallId();
     this.setState({installId: installId});
   }
 
   private async setIsEnabled() {
-    const isEnabled = await PilgrimSdk.isEnabled();
+    const isEnabled = await MovementSdk.isEnabled();
     this.setState({isEnabled: isEnabled});
   }
 
@@ -86,28 +86,28 @@ export default class HomeScreen extends Component<HomePropsProps, HomeState> {
       }
       const latitude = location.latitude;
       const longitude = location.longitude;
-      PilgrimSdk.fireTestVisit(latitude, longitude);
+      MovementSdk.fireTestVisit(latitude, longitude);
       Alert.alert(
-        'Pilgrim SDK',
+        'Movement SDK',
         `Sent test visit with location: (${latitude},${longitude})`,
       );
     } catch (e) {
-      Alert.alert('Pilgrim SDK', `${e.message}`);
+      Alert.alert('Movement SDK', `${e.message}`);
     }
   }
 
-  private async startPilgrim() {
-    PilgrimSdk.start();
+  private async startMovement() {
+    MovementSdk.start();
     this.setIsEnabled();
   }
 
-  private async stopPilgrim() {
-    PilgrimSdk.stop();
+  private async stopMovement() {
+    MovementSdk.stop();
     this.setIsEnabled();
   }
 
   private async showDebugScreen() {
-    PilgrimSdk.showDebugScreen();
+    MovementSdk.showDebugScreen();
   }
 
   render(): JSX.Element {
@@ -132,14 +132,14 @@ export default class HomeScreen extends Component<HomePropsProps, HomeState> {
           <Button
             title="Start"
             onPress={() => {
-              this.startPilgrim();
+              this.startMovement();
             }}
           />
           <View style={styles.separator} />
           <Button
             title="Stop"
             onPress={() => {
-              this.stopPilgrim();
+              this.startMovement();
             }}
           />
           <View style={styles.separator} />

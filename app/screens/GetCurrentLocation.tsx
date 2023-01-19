@@ -9,10 +9,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import PilgrimSdk, {
+import MovementSdk, {
   CurrentLocation,
   GeofenceEvent,
-} from '@foursquare/pilgrim-sdk-react-native';
+} from '@foursquare/movement-sdk-react-native';
 import MapView, {Marker} from 'react-native-maps';
 import {StackScreenProps} from '@react-navigation/stack';
 
@@ -74,10 +74,10 @@ export default class GetCurrentLocationScreen extends Component<
 
   private async getCurrentLocation() {
     try {
-      const currentLocation = await PilgrimSdk.getCurrentLocation();
+      const currentLocation = await MovementSdk.getCurrentLocation();
       this.setState({currentLocation: currentLocation});
     } catch (e) {
-      Alert.alert('Pilgrim SDK', `${e}`);
+      Alert.alert('Movement SDK', `${e}`);
     }
   }
 
