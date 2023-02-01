@@ -439,7 +439,7 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/foursquare/Movement-CocoaPods-Internal:
+  https://github.com/foursquare/Movement-CocoaPods-Internal.git:
     - Movement
   trunk:
     - CocoaAsyncSocket
@@ -592,6 +592,6 @@ SPEC CHECKSUMS:
   Yoga: 236056dd74cda4d9d76c20306fd8c20bb087614d
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 9ea50a727853c30eb02905e49c7b636cde1df0a7
+PODFILE CHECKSUM: 3d546c788494cea11409fb2340ec8761c70c5973
 
 COCOAPODS: 1.11.3
