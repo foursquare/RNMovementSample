@@ -52,14 +52,5 @@ allprojects {
                 excludeGroup "com.facebook.react"
             }
         }
-
-        // TODO remove DO NOT check in
-        maven {
-            url 'https://foursquare.jfrog.io/foursquare/libs-internal-snapshot/'
-            credentials {
-                username 'brojas'
-                password 'ukTL6rzNu6WK-yD'
-            }
-        }
     }
 }
