@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useEffect, useState} from 'react';
 import {
   Alert,
   FlatList,
@@ -14,17 +15,12 @@ import MovementSdk, {
   GeofenceEvent,
 } from '@foursquare/movement-sdk-react-native';
 import MapView, {Marker} from 'react-native-maps';
-import {StackScreenProps} from '@react-navigation/stack';
-
-interface GetCurrentLocationState {
-  currentLocation?: CurrentLocation;
-}
 
 interface ItemProps {
   geofenceEvent: GeofenceEvent;
 }
 
-function Item(props: ItemProps): JSX.Element {
+function Item(props: ItemProps) {
   const venue = props.geofenceEvent.venue;
   if (venue) {
     const locationInformation = venue.locationInformation;
@@ -66,22 +62,20 @@ function Item(props: ItemProps): JSX.Element {
   }
 }
 
-export default class GetCurrentLocationScreen extends Component<
-  StackScreenProps<{}>,
-  GetCurrentLocationState
-> {
-  state: GetCurrentLocationState = {};
+export default () => {
+  const [currentLocation, setCurrentLocation] = useState<CurrentLocation>();
 
-  private async getCurrentLocation() {
-    try {
-      const currentLocation = await MovementSdk.getCurrentLocation();
-      this.setState({currentLocation: currentLocation});
-    } catch (e) {
-      Alert.alert('Movement SDK', `${e}`);
-    }
-  }
+  useEffect(() => {
+    (async function () {
+      try {
+        setCurrentLocation(await MovementSdk.getCurrentLocation());
+      } catch (e) {
+        Alert.alert('Movement SDK', `${e}`);
+      }
+    })();
+  });
 
-  private confidenceString(confidence: number) {
+  const confidenceString = (confidence: number) => {
     switch (confidence) {
       case 0:
         return 'None';
@@ -92,9 +86,9 @@ export default class GetCurrentLocationScreen extends Component<
       case 3:
         return 'High';
     }
-  }
+  };
 
-  private locationTypeString(locationType: number) {
+  const locationTypeString = (locationType: number) => {
     switch (locationType) {
       case 0:
         return 'Unknown';
@@ -105,121 +99,112 @@ export default class GetCurrentLocationScreen extends Component<
       case 3:
         return 'Venue';
     }
-  }
+  };
 
-  componentDidMount() {
-    this.getCurrentLocation();
-  }
+  let currentLocationMapView;
+  let currentLocationDataView;
 
-  render(): JSX.Element {
-    const currentLocation = this.state.currentLocation;
-    let currentLocationMapView;
-    let currentLocationDataView;
+  const visit = currentLocation?.currentPlace;
+  if (visit) {
+    const venue = visit.venue;
+    const location = visit.location;
+    const matchedGeofences = currentLocation?.matchedGeofences || [];
 
-    const visit = currentLocation?.currentPlace;
-    if (visit) {
-      const venue = visit.venue;
-      const location = visit.location;
-      const matchedGeofences = currentLocation?.matchedGeofences || [];
-
-      if (location) {
-        currentLocationMapView = (
-          <MapView
-            style={{flex: 1}}
-            region={{
-              latitude: location.latitude,
-              longitude: location.longitude,
-              latitudeDelta: 0.01,
-              longitudeDelta: 0.01,
-            }}>
-            <Marker coordinate={location} />
-          </MapView>
-        );
-      }
-
-      if (venue !== undefined) {
-        const locationInformation = venue.locationInformation;
-        const icon = venue.categories[0]?.icon;
-        const uri = icon ? icon.prefix + '88' + icon.suffix : null;
-        currentLocationDataView = (
-          <View style={{flex: 1}}>
-            <View style={{paddingVertical: 20}}>
-              <View style={{flexDirection: 'row'}}>
-                <Image
-                  style={{
-                    width: 50,
-                    height: 50,
-                    backgroundColor: '#CCC',
-                    marginRight: 10,
-                  }}
-                  source={{uri: uri || undefined}}
-                />
-                <Text style={styles.title}>
-                  {venue.name || 'Unknown Venue'}
-                </Text>
-              </View>
-              <Text style={styles.venueData}>
-                {locationInformation?.address || 'Unknown Address'}
-              </Text>
-              <Text style={styles.venueData}>
-                {locationInformation?.city || ''},{' '}
-                {locationInformation?.state || 'Unknown State'}{' '}
-                {locationInformation?.postalCode || 'Unknown Zip'}
-              </Text>
-              <Text style={styles.venueData}>
-                Confidence: {this.confidenceString(visit.confidence)}
-              </Text>
-            </View>
-            <View style={{flex: 1}}>
-              <Text style={styles.title}>Matched Geofences:</Text>
-              <FlatList
-                data={matchedGeofences}
-                renderItem={({item}) => <Item geofenceEvent={item} />}
-                keyExtractor={item => item.id}
-              />
-            </View>
-          </View>
-        );
-      } else {
-        currentLocationDataView = (
-          <View style={{flex: 1}}>
-            <View style={{paddingVertical: 20}}>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={styles.title}>
-                  {this.locationTypeString(visit.locationType)}
-                </Text>
-              </View>
-              <Text style={styles.venueData}>
-                Confidence: {this.confidenceString(visit.confidence)}
-              </Text>
-            </View>
-            <View style={{flex: 1}}>
-              <Text style={styles.title}>Matched Geofences:</Text>
-              <FlatList
-                data={matchedGeofences}
-                renderItem={({item}) => <Item geofenceEvent={item} />}
-                keyExtractor={item => item.id}
-              />
-            </View>
-          </View>
-        );
-      }
-    } else {
-      currentLocationMapView = <MapView style={{flex: 1}} />;
-      currentLocationDataView = <View style={{flex: 1}} />;
+    if (location) {
+      currentLocationMapView = (
+        <MapView
+          style={{flex: 1}}
+          region={{
+            latitude: location.latitude,
+            longitude: location.longitude,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01,
+          }}>
+          <Marker coordinate={location} />
+        </MapView>
+      );
     }
 
-    return (
-      <>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaView style={styles.container}>
-          <View style={styles.mapSection}>{currentLocationMapView}</View>
-          <View style={styles.dataSection}>{currentLocationDataView}</View>
-        </SafeAreaView>
-      </>
-    );
+    if (venue !== undefined) {
+      const locationInformation = venue.locationInformation;
+      const icon = venue.categories[0]?.icon;
+      const uri = icon ? icon.prefix + '88' + icon.suffix : null;
+      currentLocationDataView = (
+        <View style={{flex: 1}}>
+          <View style={{paddingVertical: 20}}>
+            <View style={{flexDirection: 'row'}}>
+              <Image
+                style={{
+                  width: 50,
+                  height: 50,
+                  backgroundColor: '#CCC',
+                  marginRight: 10,
+                }}
+                source={{uri: uri || undefined}}
+              />
+              <Text style={styles.title}>{venue.name || 'Unknown Venue'}</Text>
+            </View>
+            <Text style={styles.venueData}>
+              {locationInformation?.address || 'Unknown Address'}
+            </Text>
+            <Text style={styles.venueData}>
+              {locationInformation?.city || ''},{' '}
+              {locationInformation?.state || 'Unknown State'}{' '}
+              {locationInformation?.postalCode || 'Unknown Zip'}
+            </Text>
+            <Text style={styles.venueData}>
+              Confidence: {confidenceString(visit.confidence)}
+            </Text>
+          </View>
+          <View style={{flex: 1}}>
+            <Text style={styles.title}>Matched Geofences:</Text>
+            <FlatList
+              data={matchedGeofences}
+              renderItem={({item}) => <Item geofenceEvent={item} />}
+              keyExtractor={item => item.id}
+            />
+          </View>
+        </View>
+      );
+    } else {
+      currentLocationDataView = (
+        <View style={{flex: 1}}>
+          <View style={{paddingVertical: 20}}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.title}>
+                {locationTypeString(visit.locationType)}
+              </Text>
+            </View>
+            <Text style={styles.venueData}>
+              Confidence: {confidenceString(visit.confidence)}
+            </Text>
+          </View>
+          <View style={{flex: 1}}>
+            <Text style={styles.title}>Matched Geofences:</Text>
+            <FlatList
+              data={matchedGeofences}
+              renderItem={({item}) => <Item geofenceEvent={item} />}
+              keyExtractor={item => item.id}
+            />
+          </View>
+        </View>
+      );
+    }
+  } else {
+    currentLocationMapView = <MapView style={{flex: 1}} />;
+    currentLocationDataView = <View style={{flex: 1}} />;
   }
-}
+
+  return (
+    <React.Fragment>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView style={styles.container}>
+        <View style={styles.mapSection}>{currentLocationMapView}</View>
+        <View style={styles.dataSection}>{currentLocationDataView}</View>
+      </SafeAreaView>
+    </React.Fragment>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

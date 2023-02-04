@@ -12,28 +12,28 @@ export type RootStackParamList = {
   GetCurrentLocation: undefined;
 };
 
-const RootStack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList>();
 
-export default function App(): JSX.Element {
+export default () => {
   return (
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
-        <RootStack.Navigator>
-          <RootStack.Screen
+        <Stack.Navigator>
+          <Stack.Screen
             name="Home"
             component={HomeScreen}
             options={{title: 'Movement SDK React Native Sample'}}
           />
-          <RootStack.Screen
+          <Stack.Screen
             name="GetCurrentLocation"
             component={GetCurrentLocationScreen}
             options={{title: 'Get Current Location'}}
           />
-        </RootStack.Navigator>
+        </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
