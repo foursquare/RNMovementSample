@@ -6,7 +6,7 @@
 
 #import <React/RCTAppSetupUtils.h>
 
-#import <Movement/Movement.h>
+#import <MovementSdk/MovementSdk.h>
 #import <movement-sdk-react-native/RNMovementSdk.h>
 
 #if RCT_NEW_ARCH_ENABLED
@@ -34,10 +34,10 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [[FSQMovementManager sharedManager] configureWithConsumerKey:@"CONSUMER_KEY"
-                                                        secret:@"CONSUMER_SECRET"
-                                                      delegate:nil
-                                                    completion:nil];
+  [[FSQMovementSdkManager sharedManager] configureWithConsumerKey:@"CONSUMER_KEY"
+                                                           secret:@"CONSUMER_SECRET"
+                                                         delegate:nil
+                                                       completion:nil];
 
   RCTAppSetupPrepareApp(application);
 

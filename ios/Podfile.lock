@@ -74,10 +74,10 @@ PODS:
   - fmt (6.2.1)
   - glog (0.3.5)
   - libevent (2.1.12)
-  - Movement (4.0.0-rc1)
   - movement-sdk-react-native (4.0.0):
-    - Movement (= 4.0.0-rc1)
+    - MovementSdk (= 4.0.0-beta1)
     - React-Core
+  - MovementSdk (4.0.0-beta1)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
@@ -439,8 +439,8 @@ DEPENDENCIES:
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
-  https://github.com/foursquare/Movement-CocoaPods-Internal.git:
-    - Movement
+  https://github.com/foursquare/Movement-CocoaPods-Beta:
+    - MovementSdk
   trunk:
     - CocoaAsyncSocket
     - Flipper
@@ -554,8 +554,8 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 3d02b25ca00c2d456734d0bcff864cbc62f6ae1a
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  Movement: 8b6f6b6dfd0aa923749013a0eed94f7cf29ddfed
-  movement-sdk-react-native: 8a12dc8303801a28619bc3f9d9a7966f46c52ea5
+  movement-sdk-react-native: 7aa1ceb1bf72d48c54a3dbc5bd9d556a1b360d9b
+  MovementSdk: 24178725ada3f182492cfc305ed20ab9efede129
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: b9d9fe1fc70114b751c076104e52f3b1b5e5a95a
   RCTRequired: b723d4d6da2795df58189a01f92856b6912cf256
@@ -592,6 +592,6 @@ SPEC CHECKSUMS:
   Yoga: 236056dd74cda4d9d76c20306fd8c20bb087614d
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 3d546c788494cea11409fb2340ec8761c70c5973
+PODFILE CHECKSUM: 04e64f3bf9625be1ca5d44bd0db24c455cabaa3a
 
 COCOAPODS: 1.11.3
