@@ -15,9 +15,23 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "RNPilgrimSample.app"
-               BlueprintName = "RNPilgrimSample"
-               ReferencedContainer = "container:RNPilgrimSample.xcodeproj">
+               BuildableName = "RNMovementSample.app"
+               BlueprintName = "RNMovementSample"
+               ReferencedContainer = "container:RNMovementSample.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00E356ED1AD99517003FC87E"
+               BuildableName = "RNMovementSampleTests.xctest"
+               BlueprintName = "RNMovementSampleTests"
+               ReferencedContainer = "container:RNMovementSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "RNPilgrimSampleTests.xctest"
-               BlueprintName = "RNPilgrimSampleTests"
-               ReferencedContainer = "container:RNPilgrimSample.xcodeproj">
+               BuildableName = "RNMovementSampleTests.xctest"
+               BlueprintName = "RNMovementSampleTests"
+               ReferencedContainer = "container:RNMovementSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "RNPilgrimSample.app"
-            BlueprintName = "RNPilgrimSample"
-            ReferencedContainer = "container:RNPilgrimSample.xcodeproj">
+            BuildableName = "RNMovementSample.app"
+            BlueprintName = "RNMovementSample"
+            ReferencedContainer = "container:RNMovementSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -67,16 +81,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "RNPilgrimSample.app"
-            BlueprintName = "RNPilgrimSample"
-            ReferencedContainer = "container:RNPilgrimSample.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
