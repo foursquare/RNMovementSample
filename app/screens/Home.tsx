@@ -91,47 +91,29 @@ export default (props: HomeProps) => {
     setIsEnabled(await MovementSdk.isEnabled());
   };
 
-  const showDebugScreen = async () => {
-    MovementSdk.showDebugScreen();
-  };
-
   return (
     <React.Fragment>
       <StatusBar barStyle="dark-content" />
       <ScrollView style={styles.container}>
         <Button
           title="Get Current Location"
-          onPress={() => {
-            props.navigation.navigate('GetCurrentLocation');
-          }}
+          onPress={() => props.navigation.navigate('GetCurrentLocation')}
         />
         <View style={styles.separator} />
-        <Button
-          title="Fire Test Visit"
-          onPress={() => {
-            fireTestVisit();
-          }}
-        />
+        <Button title="Fire Test Visit" onPress={() => fireTestVisit()} />
         <View style={styles.separator} />
-        <Button
-          title="Start"
-          onPress={() => {
-            startMovement();
-          }}
-        />
+        <Button title="Start" onPress={() => startMovement()} />
         <View style={styles.separator} />
-        <Button
-          title="Stop"
-          onPress={() => {
-            stopMovement();
-          }}
-        />
+        <Button title="Stop" onPress={() => stopMovement()} />
         <View style={styles.separator} />
         <Button
           title="Show Debug Screen"
-          onPress={() => {
-            showDebugScreen();
-          }}
+          onPress={() => MovementSdk.showDebugScreen()}
+        />
+        <View style={styles.separator} />
+        <Button
+          title="User Info"
+          onPress={() => props.navigation.navigate('UserInfo')}
         />
         <View style={styles.separator} />
         <Text style={styles.footer}>Install ID: {installId}</Text>

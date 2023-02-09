@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@foursquare/movement-sdk-react-native": "4.0.0-beta1",
+    "@foursquare/movement-sdk-react-native": "4.0.0-beta2",
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/stack": "^6.2.2",
     "react": "18.0.0",

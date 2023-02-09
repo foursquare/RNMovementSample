@@ -6,10 +6,12 @@ import * as React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import UserInfoScreen from './screens/UserInfo';
 
 export type RootStackParamList = {
   Home: undefined;
   GetCurrentLocation: undefined;
+  UserInfo: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -28,6 +30,11 @@ export default () => {
             name="GetCurrentLocation"
             component={GetCurrentLocationScreen}
             options={{title: 'Get Current Location'}}
+          />
+          <Stack.Screen
+            name="UserInfo"
+            component={UserInfoScreen}
+            options={{title: 'User Info'}}
           />
         </Stack.Navigator>
       </NavigationContainer>
