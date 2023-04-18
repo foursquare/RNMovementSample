@@ -47,7 +47,7 @@ allprojects {
         }
         google()
         maven { url 'https://www.jitpack.io' }
-        maven { url 'https://foursquare.jfrog.io/artifactory/libs-earlyaccess/'
+        maven { url 'https://foursquare.jfrog.io/artifactory/libs-release/'
             content {
                 excludeGroup "com.facebook.react"
             }

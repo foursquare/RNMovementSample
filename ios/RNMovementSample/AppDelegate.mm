@@ -7,6 +7,7 @@
 #import <React/RCTAppSetupUtils.h>
 
 #import <MovementSdk/MovementSdk.h>
+#import <MovementSdk/MovementSdk-Swift.h>
 #import <movement-sdk-react-native/RNMovementSdk.h>
 
 #if RCT_NEW_ARCH_ENABLED

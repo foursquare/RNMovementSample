@@ -73,7 +73,7 @@ export default () => {
         Alert.alert('Movement SDK', `${e}`);
       }
     })();
-  });
+  }, []);
 
   const confidenceString = (confidence: number) => {
     switch (confidence) {
@@ -161,7 +161,7 @@ export default () => {
             <FlatList
               data={matchedGeofences}
               renderItem={({item}) => <Item geofenceEvent={item} />}
-              keyExtractor={item => item.id}
+              keyExtractor={(item, index) => item.geofenceId + index}
             />
           </View>
         </View>
