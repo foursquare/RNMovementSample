@@ -1,0 +1,3 @@
+[submodule "react-native-geolocation"]
+	path = react-native-geolocation
+	url = git@github.com:marchinram/react-native-geolocation.git

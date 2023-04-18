@@ -8,10 +8,12 @@ import {
   Text,
   View,
 } from 'react-native';
-import RNLocation from 'react-native-location';
 import MovementSdk from '@foursquare/movement-sdk-react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParamList} from '../App';
+import Geolocation, {
+  GeolocationResponse,
+} from '@react-native-community/geolocation';
 
 type HomeProps = StackScreenProps<RootStackParamList, 'Home'>;
 
@@ -34,18 +36,28 @@ export default (props: HomeProps) => {
         'Location permission is required please enable in Settings',
       );
     }
-    const grantedWhenInUse = await RNLocation.requestPermission({
-      ios: 'whenInUse',
-      android: {
-        detail: 'fine',
-      },
+    const grantedWhenInUse = await new Promise(resolve => {
+      Geolocation.setRNConfiguration({
+        skipPermissionRequests: false,
+        authorizationLevel: 'whenInUse',
+        locationProvider: 'playServices',
+      });
+      Geolocation.requestAuthorization(
+        () => resolve(true),
+        () => resolve(false),
+      );
     });
     if (grantedWhenInUse) {
-      const grantedAlways = await RNLocation.requestPermission({
-        ios: 'always',
-        android: {
-          detail: 'fine',
-        },
+      const grantedAlways = await new Promise(resolve => {
+        Geolocation.setRNConfiguration({
+          skipPermissionRequests: false,
+          authorizationLevel: 'always',
+          locationProvider: 'playServices',
+        });
+        Geolocation.requestAuthorization(
+          () => resolve(true),
+          () => resolve(false),
+        );
       });
       if (!grantedAlways) {
         alertPermissionError();
@@ -65,12 +77,16 @@ export default (props: HomeProps) => {
 
   const fireTestVisit = async () => {
     try {
-      const location = await RNLocation.getLatestLocation();
-      if (!location) {
-        return;
-      }
-      const latitude = location.latitude;
-      const longitude = location.longitude;
+      const location: GeolocationResponse = await new Promise(
+        (resolve, reject) => {
+          Geolocation.getCurrentPosition(
+            info => resolve(info),
+            err => reject(err),
+          );
+        },
+      );
+      const latitude = location.coords.latitude;
+      const longitude = location.coords.longitude;
       MovementSdk.fireTestVisit(latitude, longitude);
       Alert.alert(
         'Movement SDK',
