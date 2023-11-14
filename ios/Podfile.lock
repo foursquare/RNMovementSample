@@ -75,10 +75,10 @@ PODS:
   - glog (0.3.5)
   - hermes-engine (0.70.8)
   - libevent (2.1.12)
-  - movement-sdk-react-native (4.0.1):
-    - MovementSdk (= 4.0.1)
+  - movement-sdk-react-native (4.0.2):
+    - MovementSdk (= 4.0.3)
     - React-Core
-  - MovementSdk (4.0.1)
+  - MovementSdk (4.0.3)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.07.22.00):
     - boost
@@ -579,8 +579,8 @@ SPEC CHECKSUMS:
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 0b19f33a9c2ec1dbdede3232606eeb1101db4cec
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  movement-sdk-react-native: 830a71c2a30d26840ea770f84be94506795e8abf
-  MovementSdk: 502e1250ec4abc1b6ced4eff1c78d7e28fa286c7
+  movement-sdk-react-native: c450e33dcbd1b165728e5eb6d36abfcb8ce8b0ca
+  MovementSdk: 3f25a394008b6a9f255711e2f109f69759d75881
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 0080d0a6ebf2577475bda044aa59e2ca1f909cda
   RCTRequired: 35a7977a5a3cb2d3830c3fef7352b7b116115829
@@ -618,6 +618,6 @@ SPEC CHECKSUMS:
   Yoga: d6133108734e69e8c0becc6ba587294b94829687
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 7e2f005c136c0e048118128434d6e7c034b54acb
+PODFILE CHECKSUM: 7f0c93c4841f350f8f0fc4ef42cf7d91d4816ff8
 
 COCOAPODS: 1.12.0

@@ -36,6 +36,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 {
   [[FSQMovementSdkManager shared] configureWithConsumerKey:@"CONSUMER_KEY"
                                                     secret:@"CONSUMER_SECRET"
+                                                oauthToken:nil
                                                   delegate:nil
                                                 completion:nil];
 
