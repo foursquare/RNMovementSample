@@ -1,7 +1,11 @@
 # RNMovementSample
 
-Movement SDK sample app using React Native
+Movement SDK sample app using React Native/Expo
 
 Read setup instructions here: https://github.com/foursquare/movement-sdk-react-native
 
-<img src="assets/screenshots/ios.png" width="300"> <img src="assets/screenshots/android.png" width="300">
+### iOS: 
+<img src="assets/screenshots/ios.png" width="300"> 
+
+### Android:
+<img src="assets/screenshots/android.png" width="300">
